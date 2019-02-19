@@ -97,6 +97,12 @@ function getRandomQuote() {
 function printQuote() {
   // get random quote through getRandomQuote func
   const quoteObject = getRandomQuote();
+  // get random RBG color using our randomInt function
+  let r = getRandomInt(0, 255);
+  let g = getRandomInt(0, 255);
+  let b = getRandomInt(0, 255);
+  const randomColor = `rgb(${r},${g},${b})`
+
   // destruct quote properties from quoteObject
   const {quote, source, category, year} = quoteObject;
   // construct htmlString using template literals + str interpolation
@@ -106,7 +112,12 @@ function printQuote() {
   // set quote-box innerHTML to htmlString
   const quoteBoxDOM = document.getElementById('quote-box');
   quoteBoxDOM.innerHTML = htmlString;
-
+  // set body background color to a random RGB color
+  document.getElementsByTagName("body")[0].style.backgroundColor = randomColor;
 }
 
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+
+setInterval(() => {
+  printQuote();
+}, 3000)
