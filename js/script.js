@@ -120,4 +120,4 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 setInterval(() => {
   printQuote();
-}, 3000)
+}, 10000)
